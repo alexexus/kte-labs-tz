@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import ru.ktelabs.mappers.DoctorMapper;
 import ru.ktelabs.models.Doctor;
 import ru.ktelabs.models.DoctorDto;
-import ru.ktelabs.mappers.DoctorMapper;
 import ru.ktelabs.services.DoctorService;
 
 import java.util.List;
