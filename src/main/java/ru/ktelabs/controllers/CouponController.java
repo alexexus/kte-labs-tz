@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import ru.ktelabs.mappers.CouponMapper;
 import ru.ktelabs.models.Coupon;
 import ru.ktelabs.services.CouponService;
 
@@ -25,7 +24,6 @@ import java.util.List;
 public class CouponController {
 
     private final CouponService service;
-    private final CouponMapper mapper;
 
     @DeleteMapping("/{id}")
     @ApiOperation("Удаление существующего талона по id")

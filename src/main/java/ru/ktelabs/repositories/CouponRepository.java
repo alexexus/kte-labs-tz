@@ -8,8 +8,6 @@ import java.util.List;
 
 public interface CouponRepository extends JpaRepository<Coupon, Long> {
 
-    boolean existsCouponsByReceptionStartTimeIsAfterAndReceptionEndTimeIsBefore(LocalDateTime start, LocalDateTime end);
-
     List<Coupon> findByPatientId(long patientId);
 
     List<Coupon> findByDoctorIdAndPatientIsNull(long doctorId);
