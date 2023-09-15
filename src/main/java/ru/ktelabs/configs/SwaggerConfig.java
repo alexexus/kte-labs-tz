@@ -1,4 +1,4 @@
-package ru.ktelabs.config;
+package ru.ktelabs.configs;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

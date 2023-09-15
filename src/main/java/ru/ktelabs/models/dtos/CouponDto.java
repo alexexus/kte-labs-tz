@@ -1,4 +1,4 @@
-package ru.ktelabs.models.dto;
+package ru.ktelabs.models.dtos;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;

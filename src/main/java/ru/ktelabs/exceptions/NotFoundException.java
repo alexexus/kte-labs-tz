@@ -1,4 +1,4 @@
-package ru.ktelabs.exception;
+package ru.ktelabs.exceptions;
 
 public class NotFoundException extends RuntimeException {
 

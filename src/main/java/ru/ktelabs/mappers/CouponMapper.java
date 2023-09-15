@@ -2,7 +2,7 @@ package ru.ktelabs.mappers;
 
 import org.springframework.stereotype.Component;
 import ru.ktelabs.models.Coupon;
-import ru.ktelabs.models.dto.CouponDto;
+import ru.ktelabs.models.dtos.CouponDto;
 import ru.ktelabs.models.Doctor;
 import ru.ktelabs.models.Patient;
 
