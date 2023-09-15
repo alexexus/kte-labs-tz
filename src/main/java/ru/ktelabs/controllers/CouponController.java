@@ -11,10 +11,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import ru.ktelabs.mappers.CouponMapper;
 import ru.ktelabs.models.Coupon;
-import ru.ktelabs.models.CouponDto;
+import ru.ktelabs.models.dto.CouponDto;
 import ru.ktelabs.services.CouponService;
 
 import java.time.LocalDateTime;
@@ -29,22 +30,10 @@ public class CouponController {
     private final CouponService service;
     private final CouponMapper mapper;
 
-    @PostMapping
-    @ApiOperation("Добавление нового талона")
-    public Coupon createCoupon(@RequestBody CouponDto couponDto) {
-        return service.createCoupon(mapper.toCoupon(couponDto));
-    }
-
     @DeleteMapping("/{id}")
     @ApiOperation("Удаление существующего талона по id")
     public void deleteCoupon(@PathVariable long id) {
         service.deleteCoupon(id);
-    }
-
-    @PatchMapping("/{id}")
-    @ApiOperation("Обновление существующего талона по id")
-    public Coupon updateCoupon(@PathVariable long id, @RequestBody CouponDto couponDto) {
-        return service.updateCoupon(id, mapper.toCoupon(couponDto));
     }
 
     @GetMapping("/{id}")
@@ -66,15 +55,31 @@ public class CouponController {
     }
 
     @GetMapping("/doctors/{id}")
-    @ApiOperation("Получение всех талонов у доктора по его id")
+    @ApiOperation("Получение всех свободных талонов у доктора по его id")
     public List<Coupon> getAllCouponsByDoctorId(@PathVariable long id) {
-        return service.getAllCouponsByDoctorId(id);
+        return service.getAllFreeCouponsByDoctorId(id);
     }
 
     @GetMapping("/reception_time_is_between")
     @ApiOperation("Получение всех талонов по времени между start и end")
-    public List<Coupon> getAllCouponsByTimeBetween(@DateTimeFormat(pattern = "dd-MM-yyyy HH:mm:ss") LocalDateTime start,
+    public List<Coupon> getAllCouponsByTimeBetween(@RequestParam
+                                                   @DateTimeFormat(pattern = "dd-MM-yyyy HH:mm:ss") LocalDateTime start,
+                                                   @RequestParam
                                                    @DateTimeFormat(pattern = "dd-MM-yyyy HH:mm:ss") LocalDateTime end) {
         return service.getAllCouponsByReceptionTimeIsBetween(start, end);
     }
+
+    @PostMapping("/schedule/{doctorId}")
+    @ApiOperation("Создание расписания на переданный день")
+    public void createSchedule(@PathVariable long doctorId,
+                               @RequestParam @DateTimeFormat(pattern = "dd-MM-yyyy HH:mm:ss") LocalDateTime start) {
+        service.createSchedule(doctorId, start);
+    }
+
+    @PostMapping("/{patientId}/{couponId}")
+    @ApiOperation("Бронирование купона пациентом")
+    public Coupon takeCouponByPatient(@PathVariable long patientId, @PathVariable long couponId) {
+        return service.takeCouponByPatient(patientId, couponId);
+    }
+
 }

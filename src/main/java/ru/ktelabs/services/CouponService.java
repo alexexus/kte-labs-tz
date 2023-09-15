@@ -7,10 +7,6 @@ import java.util.List;
 
 public interface CouponService {
 
-    Coupon createCoupon(Coupon coupon);
-
-    Coupon updateCoupon(long id, Coupon coupon);
-
     void deleteCoupon(long id);
 
     Coupon getCouponById(long id);
@@ -19,7 +15,11 @@ public interface CouponService {
 
     List<Coupon> getAllCouponsByPatientId(long id);
 
-    List<Coupon> getAllCouponsByDoctorId(long id);
+    List<Coupon> getAllFreeCouponsByDoctorId(long id);
 
     List<Coupon> getAllCouponsByReceptionTimeIsBetween(LocalDateTime start, LocalDateTime end);
+
+    void createSchedule(long doctorId, LocalDateTime date);
+
+    Coupon takeCouponByPatient(long patientId, long couponId);
 }

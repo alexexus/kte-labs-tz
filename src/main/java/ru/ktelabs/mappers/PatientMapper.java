@@ -2,7 +2,7 @@ package ru.ktelabs.mappers;
 
 import org.springframework.stereotype.Component;
 import ru.ktelabs.models.Patient;
-import ru.ktelabs.models.PatientDto;
+import ru.ktelabs.models.dto.PatientDto;
 
 @Component
 public class PatientMapper {

@@ -12,7 +12,7 @@ public interface CouponRepository extends JpaRepository<Coupon, Long> {
 
     List<Coupon> findByPatientId(long patientId);
 
-    List<Coupon> findByDoctorId(long doctorId);
+    List<Coupon> findByDoctorIdAndPatientIsNull(long doctorId);
 
     List<Coupon> findByReceptionStartTimeIsAfterAndReceptionEndTimeIsBefore(LocalDateTime start, LocalDateTime end);
 }

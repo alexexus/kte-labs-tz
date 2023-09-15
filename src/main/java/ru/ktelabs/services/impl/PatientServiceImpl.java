@@ -1,10 +1,11 @@
-package ru.ktelabs.services;
+package ru.ktelabs.services.impl;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.ktelabs.exception.NotFoundException;
 import ru.ktelabs.models.Patient;
 import ru.ktelabs.repositories.PatientRepository;
+import ru.ktelabs.services.PatientService;
 
 import java.util.List;
 
